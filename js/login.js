@@ -9,7 +9,7 @@ document.getElementById('submit-btn').addEventListener('click',function(){
          const password = passwordField.value ;
          passwordField.value = '';
           
-         if(email === 'abu@sayed.com' && password === 'secret'){
+         if(email === 'ab@sayed.com' && password === 'secret'){
                 window.location.href = 'bank.html' ;  
                  
          }else{
