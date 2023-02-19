@@ -1,35 +1,29 @@
- 
+   //step-1 - set the event handler withdraw button. 
  document.getElementById('withdraw-btn').addEventListener('click', function(){
-        
-        const withdrawField = document.getElementById('withdraw-field');
-        const withdrawFieldString = withdrawField.value ;
-        const newWithdrawAmount = parseFloat(withdrawFieldString);
-         
+         const newWithdrawBalance  = getInputValueById('withdraw-field');
+         const previousTotalBalance = getElementInnerById('total-balance');
+         const currentBalance =  previousTotalBalance - newWithdrawBalance;
 
-         const currentWithdrawBalance = document.getElementById ('withdraw-balance');
-         const withdrawBalanceString =  currentWithdrawBalance.innerText;
-         const previousWithdraw = parseFloat(withdrawBalanceString)
+         if(newWithdrawBalance > previousTotalBalance){
+                 alert('balance is low !!!');
+                 return;
+                } else if(isNaN(newWithdrawBalance) ){
+                       alert('please valid number!!!')
+                       return;
+                }else if(newWithdrawBalance <= 0){
+                        alert('please positive number !!!');
+                        return;
+                }
 
 
-         const totalCurrentBalanceElement = document.getElementById('total-balance');
-         const totalBalanceElementString = totalCurrentBalanceElement.innerText;
-         const totalBalance = parseFloat(totalBalanceElementString);
-
-         
-         withdrawField.value = '';
-        if(newWithdrawAmount > totalBalance){
-                alert('Your balance is low')
-                return;
-        }
-         
-         
-         const totalCurrentBalance = totalBalance - newWithdrawAmount;
-         totalCurrentBalanceElement.innerText = totalCurrentBalance
-         
-         const totalWithdraw = previousWithdraw + newWithdrawAmount;
-         currentWithdrawBalance.innerText = totalWithdraw;
-          
+         const previousWithdraw = getElementInnerById('withdraw-balance');
+         BalanceWithdraw = newWithdrawBalance + previousWithdraw;
+         setTotalBalance('withdraw-balance', BalanceWithdraw);
         
          
- 
+         
+                setTotalBalance('total-balance',currentBalance );
  })
+              
+                
+     
